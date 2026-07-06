@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: service-a
+  name: service-b
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: service-a
+      app: service-b
   template:
     metadata:
       labels:
-        app: service-a
+        app: service-b
     spec:
       containers:
-        - name: service-a
-          image: service-a:v1
+        - name: service-b
+          image: service-b:v1
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080

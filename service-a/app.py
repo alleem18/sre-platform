@@ -1,5 +1,5 @@
 from flask import Flask
-
+import requests
 app = Flask(__name__)
 
 @app.route("/")
@@ -11,6 +11,15 @@ def home():
 @app.route("/health")
 def health():
 	return {"status": "ok"}, 200
+
+
+@app.route("/call-b")
+def call_b():
+    try:
+        resp = requests.get("http://service-b", timeout=2)
+        return {"service-a": "ok", "service-b-response": resp.json()}
+    except Exception as e:
+        return {"service-a": "ok", "service-b-error": str(e)}, 502
 
 
 if __name__=="__main__":

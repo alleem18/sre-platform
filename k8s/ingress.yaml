@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sre-platform-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  ingressClassName: nginx
+  rules:
+    - http:
+        paths:
+          - path: /a(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: service-a
+                port:
+                  number: 80
+          - path: /b(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: service-b
+                port:
+                  number: 80

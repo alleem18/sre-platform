@@ -1,7 +1,13 @@
+
 from flask import Flask
+import requests
+
+from prometheus_flask_exporter import PrometheusMetrics
+
 import random
 
 app = Flask(__name__)
+metrics = PrometheusMetrics(app)
 
 @app.route("/")
 def home():

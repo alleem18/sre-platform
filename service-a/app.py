@@ -25,9 +25,9 @@ def call_b():
         return {"service-a": "ok", "service-b-error": str(e)}, 502
 
 @app.route("/healthx")
-def healtx():
-        return {"status": "ok"}, 200
+def healthx():
 
+        return {"service" : "service-a-health", "status" : "healthy"}
 
 if __name__=="__main__":
 	app.run(host="0.0.0.0", port=8080)

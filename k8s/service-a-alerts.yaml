@@ -1,0 +1,24 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: service-a-slo-alerts
+  namespace: monitoring
+  labels:
+    release: kube-prometheus-stack
+spec:
+  groups:
+    - name: service-a.slo
+      rules:
+        - alert: ServiceAHighErrorRate
+          expr: |
+            (
+              sum(rate(flask_http_request_duration_seconds_count{job="service-a", status=~"5.."}[5m]))
+              /
+              sum(rate(flask_http_request_duration_seconds_count{job="service-a"}[5m]))
+            ) > 0.01
+          for: 2m
+          labels:
+            severity: critical
+          annotations:
+            summary: "service-a error rate above 1% SLO"
+            description: "service-a 5xx error rate has exceeded the 1% error budget for more than 2 minutes."

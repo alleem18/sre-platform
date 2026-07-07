@@ -24,8 +24,8 @@ def call_b():
     except Exception as e:
         return {"service-a": "ok", "service-b-error": str(e)}, 502
 
-@app.route("/health2")
-def health():
+@app.route("/healthx")
+def healtx():
         return {"status": "ok"}, 200
 
 

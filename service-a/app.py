@@ -24,10 +24,6 @@ def call_b():
     except Exception as e:
         return {"service-a": "ok", "service-b-error": str(e)}, 502
 
-@app.route("/healthx")
-def healthx():
-
-        return {"service" : "service-a-health", "status" : "healthy"}
 
 if __name__=="__main__":
 	app.run(host="0.0.0.0", port=8080)

@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: service-b
-          image: ghcr.io/alleem18/sre-platform-service-b:39b00867881b5e07c3f2673ced204f87cb6f03e8
+          image: ghcr.io/alleem18/sre-platform-service-b:d6ef9b570fed285004b6894111fa95a93502486a
           imagePullPolicy: IfNotPresent 
           ports:
             - containerPort: 8080

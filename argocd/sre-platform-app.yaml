@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/alleem18/sre-platform.git
-    targetRevision: gitops
+    targetRevision: main
     path: k8s
   destination:
     server: https://kubernetes.default.svc

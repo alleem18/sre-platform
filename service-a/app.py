@@ -24,8 +24,8 @@ def call_b():
     except Exception as e:
         return {"service-a": "ok", "service-b-error": str(e)}, 502
 
-@app.route("/good?")
-def good?():
+@app.route("/good")
+def good():
         return {"status": "yes"}, 200
 
 if __name__=="__main__":
